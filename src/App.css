@@ -1,0 +1,41 @@
+
+
+:root {
+  --dark-colour: #0A0A0A;
+  --light-colour: #f6f2e7;
+  --emissions-colour: #6c236c
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--light-colour);
+  background-color: var(--dark-colour);
+  margin: auto;
+  text-align: center;
+}
+
+.overall-title {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 100px;
+  margin-top: 40px;
+  font-size: 40px;
+  width: 600px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+
+.whole-chart-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 85%;
+  margin: auto;
+  text-align: center;
+}

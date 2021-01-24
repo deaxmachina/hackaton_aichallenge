@@ -1,0 +1,57 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces&display=swap');
+
+
+.tree-and-city-container {
+  margin: auto;
+  text-align: center;
+  position: relative;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.tooltip {
+  font-family: 'Source Sans Pro', sans-serif;
+  opacity: 0;
+  position: absolute;
+  border: 0px solid var(--dark-colour);
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  padding: 0.8em;
+  background: var(--light-colour);
+  color: var(--dark-colour);
+  z-index: 10;
+  transition: all 0.2s ease-out;
+  pointer-events: none;  
+  width: 200px;
+}
+
+.tooltip-text {
+  display: block;
+  font-size: 12px;
+}
+
+.city-name {
+  font-family: 'Fraunces', serif;
+  text-align: center;
+  margin: auto;
+  width: 200px;
+  font-size: 14px;
+}
+
+.all-cities-button {
+  background-color: var(--dark-colour);
+  color: var(--light-colour);
+  border: 2px solid var(--light-colour);
+  width: 150px;
+  position: fixed;
+  top: 200px;
+  left: 2%;
+  box-sizing: border-box;
+  padding: 5px;
+  cursor: default;
+}
