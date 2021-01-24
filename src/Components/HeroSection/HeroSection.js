@@ -39,13 +39,13 @@ const HeroSection = () => {
       <div className="separator"></div>
 
       <div className="whole-graph-project-description">
-        <span className="bold-bit">Datset description: </span>
+        <span className="bold-bit">Dataset description: </span>
         <span className="dataset-description">
-          The global data set used for this challenge was assembled by the 
+          "The global data set used for this challenge was assembled by the 
             <a href={carbonDisclosureProjectLink} target="_blank"> Carbon Disclosure Project </a>
-          and includes municipal greenhouse gas emissions data submitted to the CDP between 2016 and 2020 and covering yearsranging from 1990-2019. 
+          and includes municipal greenhouse gas emissions data submitted to the CDP between 2016 and 2020 and covering years ranging from 1990-2019. 
             <a href={excelSheetWithDataLink} target="_blank"> This excel workbook  </a>
-          includes the CDP’s raw data [...]. 
+          includes the CDP’s raw data [...] (used in this challenge)."
         </span>
         <br></br>
         <span className="bold-bit">Full project description: </span> 

@@ -400,7 +400,7 @@ const TreeAndCity = ({
         .text(d3.format(".2s")(meanEmissionsSelectedCity))
         .attr("dy", "0.35em")
         .attr("text-anchor", "middle")
-        .attr("transform", `translate(${0}, ${-60})`)
+        .attr("transform", `translate(${0}, ${-70})`)
         .attr("font-size", "0em")
         .transition(t)
           .attr("font-size", "1.5em")
@@ -411,13 +411,13 @@ const TreeAndCity = ({
         .join("text")
         .classed("text-for-avg-emissions-title", true)
           .attr("fill", lightColour)
-          .text("average emissions / year")
+          .text("avg emissions / year")
           .attr("dy", "0.35em")
           .attr("text-anchor", "middle")
-          .attr("transform", `translate(${0}, ${-40})`)
+          .attr("transform", `translate(${0}, ${-50})`)
           .attr("font-size", "0em")
           .transition(t)
-            .attr("font-size", "0.5em")
+            .attr("font-size", "0.6em")
 
 
     /////////////////////////////////////////////
@@ -474,7 +474,7 @@ const TreeAndCity = ({
           .attr("y", -22)
           .attr("text-anchor", "end")
           //.attr("font-weight", "bold")
-          .text("total emissions (m. tonnes)"))
+          .text(emissionsTotalCol))
 
     // Call the axes 
     d3.select(xAxisLineChartRef.current).call(xAxisLineChart)
