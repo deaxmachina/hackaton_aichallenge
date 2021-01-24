@@ -31,6 +31,7 @@ const TreeAndCity = ({
   const defsRef = useRef();
   const tooltipRef = useRef();
   const opacityGRef = useRef();
+  const legendRef = useRef();
 
 
   /// STATES ///
@@ -43,7 +44,7 @@ const TreeAndCity = ({
   // dimensions 
   const widthTree = 1200;
   const heightTree = 1200;
-  const radiusTree = widthTree / 2
+  const radiusTree = widthTree / 2 
   const minCountryRadius = 2;
   const maxCountryRadius = 14;
   const minEmissions = 0;
@@ -79,6 +80,66 @@ const TreeAndCity = ({
 
     const svg = d3.select(svgRef.current)
 
+
+    /////////////////////////////////////////////
+    //////////////  FILTERS /////////////////////
+    /////////////////////////////////////////////
+    //Container for the gradients
+    const defs = d3.select(defsRef.current)
+    /// Glow ///
+    const glowFilter = defs
+      .selectAll("filter").data([0]).join("filter").attr("id","glow")
+    glowFilter
+      .selectAll("feGaussianBlur").data([0]).join("feGaussianBlur")
+        .attr("class", "blur").attr("stdDeviation", 6).attr("result","coloredBlur");
+    const feMerge = glowFilter
+      .selectAll("feMerge").data([0]).join("feMerge")
+    feMerge
+      .selectAll("feMergeNode").data([0]).join("feMergeNode").attr("in","coloredBlur")
+    feMerge
+      .selectAll("feMergeNode").data([0]).join("feMergeNode")
+        .attr("in","SourceGraphic")
+
+    /// Static Noise ///
+    const staticNoise = defs 
+      .append("filter").attr("id", "noise")
+    staticNoise.append("feTurbulence")
+      .attr("type", "fractalNoise").attr("baseFrequency", 0.9).attr("result", "noisy")
+    staticNoise.append("feColorMatrix")
+      .attr("type", "saturate").attr("values", 0)
+    staticNoise.append("feComposite")
+      .attr("operator", "in").attr("in2", "SourceGraphic").attr("result", "monoNoise")
+    staticNoise.append("feBlend")
+      .attr("in", "SourceGraphic").attr("in2", "monoNoise").attr("mode", "multiply")
+
+		/// Radial Gradients ///
+		defs.append("radialGradient")
+			.attr("id", "radial-gradient")
+			.attr("cx", "50%").attr("cy", "50%").attr("r", "50%")	
+			.selectAll("stop")
+				.data([
+						{offset: "0%", color: lowEmissiosColour},
+						{offset: "50%", color: midEmissionsColour},
+						{offset: "100%", color:  highEmissionsColour},
+					])
+			.enter().append("stop")
+			.attr("offset", function(d) { return d.offset; })
+      .attr("stop-color", function(d) { return d.color; });
+
+
+    /// Area Gradient /// 
+    const areaGradient = defs
+      .selectAll("linearGradient").data([0]).join("linearGradient")
+        .attr("id","areaGradient")
+        .attr("x1", "0%").attr("y1", "0%").attr("x2", "0%").attr("y2", "100%");
+    areaGradient
+      .selectAll(".stop-1").data([0]).join("stop").classed("stop-1", true)
+        .attr("offset", "0%").attr("stop-color", emissionsColour).attr("stop-opacity", 0.6);
+    areaGradient
+      .selectAll(".stop-2").data([0]).join("stop").classed("stop-2", true)
+        .attr("offset", "100%").attr("stop-color", darkColour).attr("stop-opacity", 0);
+
+
     ////////////////////////////////////////////////////////////////
     ////////////////                      //////////////////////////
     ///////////////       TREE GRAPH     ///////////////////////////
@@ -86,7 +147,7 @@ const TreeAndCity = ({
     ////////////////////////////////////////////////////////////////
  
     ////// Transform the data //////
-    const tree = d3.cluster().size([2 * Math.PI, radiusTree - 100])
+    const tree = d3.cluster().size([2 * Math.PI, radiusTree - 120])
     const root = tree(d3.hierarchy(dataTree))
 
     /// Graph area ///  
@@ -185,71 +246,51 @@ const TreeAndCity = ({
 
 
     /////////////////////////////////////////////
-    //////////////  FILTERS /////////////////////
-    /////////////////////////////////////////////
-    //Container for the gradients
-    const defs = d3.select(defsRef.current)
-    /// Glow ///
-    const glowFilter = defs
-      .selectAll("filter").data([0]).join("filter").attr("id","glow")
-    glowFilter
-      .selectAll("feGaussianBlur").data([0]).join("feGaussianBlur")
-        .attr("class", "blur").attr("stdDeviation", 6).attr("result","coloredBlur");
-    const feMerge = glowFilter
-      .selectAll("feMerge").data([0]).join("feMerge")
-    feMerge
-      .selectAll("feMergeNode").data([0]).join("feMergeNode").attr("in","coloredBlur")
-    feMerge
-      .selectAll("feMergeNode").data([0]).join("feMergeNode")
-        .attr("in","SourceGraphic")
-
-    /// Static Noise ///
-    const staticNoise = defs 
-      .append("filter").attr("id", "noise")
-    staticNoise.append("feTurbulence")
-      .attr("type", "fractalNoise").attr("baseFrequency", 0.9).attr("result", "noisy")
-    staticNoise.append("feColorMatrix")
-      .attr("type", "saturate").attr("values", 0)
-    staticNoise.append("feComposite")
-      .attr("operator", "in").attr("in2", "SourceGraphic").attr("result", "monoNoise")
-    staticNoise.append("feBlend")
-      .attr("in", "SourceGraphic").attr("in2", "monoNoise").attr("mode", "multiply")
-
-		/// Radial Gradients ///
-		defs.append("radialGradient")
-			.attr("id", "radial-gradient")
-			.attr("cx", "50%").attr("cy", "50%").attr("r", "50%")	
-			.selectAll("stop")
-				.data([
-						{offset: "0%", color: lowEmissiosColour},
-						{offset: "50%", color: midEmissionsColour},
-						{offset: "100%", color:  highEmissionsColour},
-					])
-			.enter().append("stop")
-			.attr("offset", function(d) { return d.offset; })
-      .attr("stop-color", function(d) { return d.color; });
-
-    /// Area Gradient /// 
-    const areaGradient = defs
-      .selectAll("linearGradient").data([0]).join("linearGradient")
-      .attr("id","areaGradient")
-      .attr("x1", "0%").attr("y1", "0%").attr("x2", "0%").attr("y2", "100%");
-    areaGradient
-      .selectAll(".stop-1").data([0]).join("stop").classed("stop-1", true)
-      .attr("offset", "0%").attr("stop-color", emissionsColour).attr("stop-opacity", 0.6);
-    areaGradient
-      //.append("stop")
-      .selectAll(".stop-2").data([0]).join("stop").classed("stop-2", true)
-      .attr("offset", "100%").attr("stop-color", darkColour).attr("stop-opacity", 0);
-
-
-    /////////////////////////////////////////////
     //////////  Circle Chart  ///////////////////
     /////////////////////////////////////////////
     /// Graph area ///  
     const gCityGraph = d3.select(gRefCityGraph.current)
       .attr("transform", `translate(${widthTree/2}, ${heightTree/2})`)
       .style("opacity", 1)
+
+    /////////////////////////////////////////////
+    //////////  Emissions Legend  ////////////////
+    /////////////////////////////////////////////
+    const emissionsLegendG = d3.select(legendRef.current)
+      .attr("transform", `translate(${widthTree/2}, ${-50})`)
+
+    const emissionsLegendCircle = emissionsLegendG
+      .selectAll(".emissionsLegendCircle")  
+      .data([0])
+      .join("circle")
+        .classed("emissionsLegendRect", true)
+        .attr("r", 60)
+        .style("fill", "url(#radial-gradient)")
+
+    const emissionsLegendTextMost = emissionsLegendG
+      .selectAll(".emissionsLegendTextMost")  
+      .data([0])
+      .join("text")
+      .classed("emissionsLegendTextMost", true)
+        .style("fill", lightColour)
+        .attr("transform", `translate(${65}, ${0})`)
+        .attr("font-size", "0.5em")
+        .attr("dy", "0.35em")
+        .attr("text-anchor", "start")
+        .text(d3.format(".2s")(maxEmissions) + " emissions")
+
+    const emissionsLegendTextLeast = emissionsLegendG
+      .selectAll(".emissionsLegendTextLest")  
+      .data([0])
+      .join("text")
+      .classed("emissionsLegendTextLest", true)
+        .style("fill", lightColour)
+        .attr("transform", `translate(${0}, ${0})`)
+        .attr("font-size", "0.5em")
+        .attr("dy", "0.35em")
+        .attr("text-anchor", "middle")
+        .text(minEmissions + " emissions")
+
 
 
 
@@ -581,32 +622,6 @@ const TreeAndCity = ({
         gCityGraph.style("opacity", 0)
       })
 
-    /*
-    const opacityButton = opacityG
-      .selectAll(".opacity-rect")
-      .data([0])
-      .join("rect")
-      .classed("opacity-rect", true)
-        .attr("width", 110)
-        .attr("height", 40)
-        .attr("rx", 2)
-        .attr("fill", "none")
-        .attr("stroke", lightColour)
-        .attr("stroke-width", 3)
-
-    const opacityButtonText = opacityG
-      .selectAll(".opacity-text")
-      .data([0])
-      .join("text")
-      .classed("opacity-text", true)
-        .text("back to all cities")
-        .style("fill", lightColour)
-        .attr("font-size", "0.8em")
-        .attr("x", -50)
-        .attr("y", -25)
-      */
-
-
     } 
   }, [dataTree, dataCities, city]);
 
@@ -614,8 +629,9 @@ const TreeAndCity = ({
   return (
 
       <div className="tree-and-city-container">
-        <svg ref={svgRef} width={widthTree} height={heightTree}>
+        <svg ref={svgRef} width={widthTree} height={heightTree} overflow="visible">
           <defs ref={defsRef}></defs>
+          <g ref={legendRef}></g>
 
           {/* TREE */}
           <g ref={gRefTreeGraph}>

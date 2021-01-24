@@ -5,7 +5,9 @@ import dataLoadTree from "./data/data_for_tree_v0.json";
 import * as d3 from "d3";
 import _ from "lodash";
 
-import TreeAndCity from "./Components/TreeAndCity/TreeAndCity"
+import TreeAndCity from "./Components/TreeAndCity/TreeAndCity";
+import HeroSection from "./Components/HeroSection/HeroSection";
+import Footer from "./Components/FooterSection/FooterSection"
 
 const Complete = () => {
 
@@ -68,19 +70,20 @@ const Complete = () => {
 
   return (
     <div>
-      <h1 className="overall-title">Reducing CO2 Challenge</h1>
-    {
-      (dataTree) ?
-        <TreeAndCity 
-          dataTree={dataTree}
-          dataCities={dataCities}
-          meanEmissionsTotal={meanEmissionsTotal}
-          meanEmissionsPerCapitaTotal={meanEmissionsPerCapitaTotal}
-          emissionsType={emissionsType}
-          cities={cities}
-        />
-        : null
-    }
+      <HeroSection />
+      {
+        (dataTree) ?
+          <TreeAndCity 
+            dataTree={dataTree}
+            dataCities={dataCities}
+            meanEmissionsTotal={meanEmissionsTotal}
+            meanEmissionsPerCapitaTotal={meanEmissionsPerCapitaTotal}
+            emissionsType={emissionsType}
+            cities={cities}
+          />
+          : null
+      }
+      <Footer />
     </div>
   )
 };
