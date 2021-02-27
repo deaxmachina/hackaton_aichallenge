@@ -260,6 +260,7 @@ const TreeAndCity = ({
     /////////////////////////////////////////////
     //////////  Emissions Legend  ////////////////
     /////////////////////////////////////////////
+
     /*
     const emissionsLegendG = d3.select(legendRef.current)
       .attr("transform", `translate(${widthTree/2}, ${-50})`)
@@ -282,7 +283,7 @@ const TreeAndCity = ({
         .attr("font-size", "0.5em")
         .attr("dy", "0.35em")
         .attr("text-anchor", "start")
-        .text(d3.format(".2s")(maxEmissions) + " emissions")
+        //.text(d3.format(".2s")(maxEmissions) + " emissions")
 
     const emissionsLegendTextLeast = emissionsLegendG
       .selectAll(".emissionsLegendTextLest")  
@@ -294,10 +295,9 @@ const TreeAndCity = ({
         .attr("font-size", "0.5em")
         .attr("dy", "0.35em")
         .attr("text-anchor", "middle")
-        .text(minEmissions + " emissions")
+        //.text(minEmissions + " emissions")
 
-      */
-
+    */
 
     ///////////////////////////////////////////////////////////////////////////////////
 

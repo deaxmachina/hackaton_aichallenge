@@ -13,7 +13,7 @@ const hackathonOrgLink = "https://launchlab.ai/"
 // name of the org that set the hackathon challenge 
 const nameOfOrg = "The Climate Reality Project Canada"
 // name of the challenge description 
-const challengeName = " Reducing CO2 (in cities) challenge"
+const challengeName = " Reducing CO2 in cities challenge"
 // link to the challenge description 
 const challengeDescriptionLink = "https://drive.google.com/file/d/1mZBAqlsNLVGj1qGAbAthNj2YMgGwkPNh/view"
 // description of the dataset - copy pasted from the project description 
@@ -69,7 +69,7 @@ const HeroSection = () => {
       </div>  
 
       <p className="whole-graph-disclaimer">
-        Important! There are bound to be bugs and mistakes in the data for this visualisation. The current version is a very quick hackathon prototype and neither the data cleaning process nor the code have been reviewed. "CO2/carbon emissions" might include other emissions as well. Please view this as a proof of concept.
+        Disclaimer! There are bound to be bugs and mistakes in the data for this visualisation. The current version is a very quick hackathon prototype and neither the data cleaning process nor the code have been reviewed. "CO2/carbon emissions" might include other emissions as well. I am not a domain expert. Please view this as a proof of concept.
         <br></br>
         * Best viewed on a laptop/desktop screen.
       </p>
