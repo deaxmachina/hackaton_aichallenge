@@ -69,7 +69,7 @@ const HeroSection = () => {
       </div>  
 
       <p className="whole-graph-disclaimer">
-        Important! There are bound to be bugs and mistakes in the data for this visualisation. The current version is a very quick hackathon prototype and neither the data cleaning process nor the code have been reviewed. "CO2/carbon emissions" might include other emissions as well. Please view this as a proof of concept only! 
+        Important! There are bound to be bugs and mistakes in the data for this visualisation. The current version is a very quick hackathon prototype and neither the data cleaning process nor the code have been reviewed. "CO2/carbon emissions" might include other emissions as well. Please view this as a proof of concept.
         <br></br>
         * Best viewed on a laptop/desktop screen.
       </p>

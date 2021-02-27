@@ -8,11 +8,19 @@
   background-color: var(--light-colour);
   margin-top: 70px;
   color: var(--dark-colour);
-  padding: 25px 20px;
+  padding: 10px;
   box-sizing: border-box;
-  font-size: 9px;
+  font-size: 12px;
   width: 100%;
 }
 .whole-graph-methodology {
   font-weight: bold;
+  margin: 10px;
+}
+
+.notes-list {
+  text-align: left;
+  margin: auto;
+  width: 70%;
+  margin-bottom: 10px;
 }
