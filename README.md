@@ -10,6 +10,7 @@
 and includes municipal greenhouse gas emissions data submitted to the CDP between 2016 and 2020 and covering years ranging from 1990-2019."
 
 ### Links
+- <a href="https://climate-crisis.devpost.com/?ref_content=default&ref_feature=challenge&ref_medium=discover" target="_blank">Climate Crisis AI Hackathon</a>
 - Climate Crisis AI Hackathon : https://climate-crisis.devpost.com/?ref_content=default&ref_feature=challenge&ref_medium=discover
 - AI Launch Lab: https://launchlab.ai/
 - The Climate Reality Project Canada: https://www.climatereality.ca/
