@@ -30,7 +30,7 @@ const Complete = () => {
   const [cities, setCities] = useState(null);
   const [emissionsType, setEmissionsType] = useState("total emissions") //useState("per capita emissions")
   // whether we want to show all cities or only thoese with data for >2 years 
-  const [showAllCities, setShowAllCities] = useState(false);
+  const [showAllCities, setShowAllCities] = useState(true);
 
   // Data load ///
   useEffect(() => {
