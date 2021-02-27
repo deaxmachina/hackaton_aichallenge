@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Complete.css";
 import dataLoadCities from "./data/cities_with_2_records.csv"
-import dataLoadTree from "./data/data_for_tree_v0.json";
+import dataLoadTree from "./data/data_for_tree_v1.json";
+import dataLoadTreeAllCities from "./data/data_for_tree_v0.json";
+import dataLoadTreeSomeCities from "./data/data_for_tree_v1.json";
 import * as d3 from "d3";
 import _ from "lodash";
 
@@ -27,6 +29,8 @@ const Complete = () => {
   const [meanEmissionsPerCapitaTotal, setMeanEmissionsPerCapitaTotal] = useState(null);
   const [cities, setCities] = useState(null);
   const [emissionsType, setEmissionsType] = useState("total emissions") //useState("per capita emissions")
+  // whether we want to show all cities or only thoese with data for >2 years 
+  const [showAllCities, setShowAllCities] = useState(false);
 
   // Data load ///
   useEffect(() => {
@@ -71,15 +75,27 @@ const Complete = () => {
   return (
     <div>
       <HeroSection />
+      <div className="cities-selector-group">
+        <button className="allcities-btn" onClick={() => setShowAllCities(true)}>all cities</button>
+        <button className="somecities-btn" onClick={() => setShowAllCities(false)}>cities with > 2 yr data</button>
+        <div className="allcities-img"></div>
+        <div className="somecities-img"></div>
+      </div>
+
       {
         (dataTree) ?
           <TreeAndCity 
-            dataTree={dataTree}
+            showAllCities={showAllCities}
+            dataTree={showAllCities ? dataLoadTreeAllCities : dataLoadTreeSomeCities}
             dataCities={dataCities}
             meanEmissionsTotal={meanEmissionsTotal}
             meanEmissionsPerCapitaTotal={meanEmissionsPerCapitaTotal}
             emissionsType={emissionsType}
             cities={cities}
+            widthTree={showAllCities ? 1200 : 900} // 900 or 1200
+            heightTree={showAllCities ? 1200 : 900} // 900 or 1200
+            minCountryRadius={showAllCities ? 2 : 3} // 2 or 3
+            maxCountryRadius={showAllCities ? 14 : 18} //14 or 18
           />
           : null
       }

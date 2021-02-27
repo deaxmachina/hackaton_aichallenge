@@ -6,11 +6,15 @@ import "./TreeAndCity.css"
 
 
 const TreeAndCity = ({
+  showAllCities,
   dataTree,
   dataCities, 
   meanEmissionsTotal, 
   cities,
-  meanEmissionsPerCapitaTotal, 
+  widthTree,
+  heightTree,
+  minCountryRadius,
+  maxCountryRadius
 }) => {
 
   /// REFS ///
@@ -42,11 +46,11 @@ const TreeAndCity = ({
 
   /// CONSTANTS ///
   // dimensions 
-  const widthTree = 1200;
-  const heightTree = 1200;
+  //const widthTree = 900; // 1200
+  //const heightTree = 900; // 1200
   const radiusTree = widthTree / 2 
-  const minCountryRadius = 2;
-  const maxCountryRadius = 14;
+  //const minCountryRadius = 3; // 2
+  //const maxCountryRadius = 18; //14 
   const minEmissions = 0;
   const maxEmissions = 64000000;
   const innerRadiusCityCircle = 100;
@@ -71,7 +75,7 @@ const TreeAndCity = ({
   const emissionsColour = "#3e1f47"
 
   // opacity 
-  const treeCirclesOpacity = 0.8;
+  const treeCirclesOpacity = 0.9;
 
 
   /// D3 Code ///
@@ -256,6 +260,7 @@ const TreeAndCity = ({
     /////////////////////////////////////////////
     //////////  Emissions Legend  ////////////////
     /////////////////////////////////////////////
+    /*
     const emissionsLegendG = d3.select(legendRef.current)
       .attr("transform", `translate(${widthTree/2}, ${-50})`)
 
@@ -291,7 +296,7 @@ const TreeAndCity = ({
         .attr("text-anchor", "middle")
         .text(minEmissions + " emissions")
 
-
+      */
 
 
     ///////////////////////////////////////////////////////////////////////////////////
@@ -606,8 +611,11 @@ const TreeAndCity = ({
       if (cities.includes(selectedCity)) {
         // set the selected city to be the one corresponding to the node 
         setSelectedCity(datum.data.name)
-        // and make tree graph very transparent
-        gTreeGraph.attr("opacity", 0.04)
+        // and make tree graph very transparent; 
+        // if it's not showing all cities don't make it transparent as it still 
+        // looks good even if it's opaque
+        showAllCities ? gTreeGraph.attr("opacity", 0.04) : gTreeGraph.attr("opacity", 0.9)
+        
         // set the city graph opacity to 1 
         gCityGraph.style("opacity", 1)
       }
@@ -623,7 +631,7 @@ const TreeAndCity = ({
       })
 
     } 
-  }, [dataTree, dataCities, city]);
+  }, [dataTree, dataCities, city, widthTree, heightTree, minCountryRadius, maxCountryRadius, showAllCities]);
 
 
   return (
@@ -653,7 +661,7 @@ const TreeAndCity = ({
 
         </svg>
 
-        <div ref={opacityGRef} className="all-cities-button">show all cities</div>
+        <div ref={opacityGRef} className="all-cities-button">back to cities</div>
 
         <div className="tooltip" ref={tooltipRef}>
         { selectedEvent ?

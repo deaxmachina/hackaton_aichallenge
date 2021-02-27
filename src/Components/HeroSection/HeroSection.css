@@ -1,6 +1,6 @@
 #hero {
   width: 100%;
-  text-align: center;
+  text-align: left;
   margin: auto;
   margin-bottom: 30px;
   font-family: 'Source Sans Pro', sans-serif;
@@ -8,21 +8,23 @@
 }
 
 .whole-graph-title {
+  text-align: center;
   width: 100%;
   margin: auto;
   margin-bottom: 50px;
   font-weight: bold;
-  font-size: 52px;
+  font-size: 56px;
   background-color: var(--light-colour);
   color: var(--dark-colour);
   padding: 30px 20px;
   box-sizing: border-box;
 }
 .whole-graph-subtitle {
-  width: 80%;
+  width: 60%;
   margin: auto;
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 28px;
+  text-align: center;
 }
 
 .challenge-name {
@@ -77,19 +79,17 @@ a:hover {
   background-color: var(--light-colour);
   color: var(--dark-colour);
   padding: 30px;
-  width: 100%;
+  width: 60%;
   box-sizing: border-box;
+  margin: auto;
 }
 .whole-graph-instructions-title {
   padding: 0;
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 28px;
 }
 
 .whole-graph-instructions-list {
-  width: 60%;
-  margin: auto;
-  text-align: left;
   list-style-position: inside;
 }
 
@@ -103,7 +103,21 @@ a:hover {
 .whole-graph-disclaimer {
   margin: auto;
   margin-top: 50px;
-  margin-bottom: 180px;
+  margin-bottom: 50px;
   width: 60%;
-  font-size: 12px;
+}
+
+@media(max-width: 600px) {
+  .whole-graph-subtitle {
+    width: 80%;
+  }
+  .whole-graph-project-description {
+    width: 80%;
+  }
+  .whole-graph-instructions {
+    width: 80%;
+  }
+  .whole-graph-disclaimer {
+    width: 80%;
+  }
 }

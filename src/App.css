@@ -1,7 +1,7 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Noto+Sans&display=swap');
 
 :root {
-  --dark-colour: #0A0A0A;
+  --dark-colour: #264653;
   --light-colour: #f6f2e7;
   --emissions-colour: #6c236c
 }
