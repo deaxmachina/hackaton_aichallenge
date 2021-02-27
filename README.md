@@ -11,11 +11,10 @@ and includes municipal greenhouse gas emissions data submitted to the CDP betwee
 
 ### Links
 - <a href="https://climate-crisis.devpost.com/?ref_content=default&ref_feature=challenge&ref_medium=discover" target="_blank">Climate Crisis AI Hackathon</a>
-- Climate Crisis AI Hackathon : https://climate-crisis.devpost.com/?ref_content=default&ref_feature=challenge&ref_medium=discover
-- AI Launch Lab: https://launchlab.ai/
-- The Climate Reality Project Canada: https://www.climatereality.ca/
-- Reducing CO2 (in cities) challenge project description: https://drive.google.com/file/d/1mZBAqlsNLVGj1qGAbAthNj2YMgGwkPNh/view
-- Reducing CO2 (in cities) challenge data: https://drive.google.com/file/d/16uWl99pHq21mp4m-dWiA0VrqyCDlKPlS/view
+- <a href="https://launchlab.ai/" target="_blank">AI Launch Lab</a>
+- <a href="https://www.climatereality.ca/" target="_blank">The Climate Reality Project Canada</a>
+- <a href="https://drive.google.com/file/d/1mZBAqlsNLVGj1qGAbAthNj2YMgGwkPNh/view" target="_blank">Reducing CO2 (in cities) challenge project description</a>
+- <a href="https://drive.google.com/file/d/16uWl99pHq21mp4m-dWiA0VrqyCDlKPlS/view" target="_blank">Reducing CO2 (in cities) challenge data</a> 
 
 ### Data Notes 
 <ul>
