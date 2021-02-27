@@ -33,4 +33,4 @@ and includes municipal greenhouse gas emissions data submitted to the CDP betwee
 ## Website
 https://co2cities.netlify.app/ 
 
-<a data-flickr-embed="true" href="https://www.flickr.com/photos/192110190@N06/50984343631/in/dateposted-public/" title="ogimage"><img src="https://live.staticflickr.com/65535/50984343631_a68166c7d5_z.jpg" width="640" height="334" alt="ogimage"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+<a data-flickr-embed="true" href="https://www.flickr.com/photos/192110190@N06/50984343631/in/dateposted-public/" title="ogimage"><img src="https://live.staticflickr.com/65535/50984343631_a68166c7d5_z.jpg" width="700" alt="ogimage"></a>
