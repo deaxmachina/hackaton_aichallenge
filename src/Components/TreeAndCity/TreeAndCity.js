@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
 import _ from "lodash";
 import chroma from "chroma-js";
+import { annotationCalloutElbow, annotationCalloutCurve, annotation } from "d3-svg-annotation";
 import "./TreeAndCity.css"
 
 
@@ -36,13 +37,14 @@ const TreeAndCity = ({
   const tooltipRef = useRef();
   const opacityGRef = useRef();
   const legendRef = useRef();
+  const annotationRef = useRef();
 
 
   /// STATES ///
   // for the tooltip
   const [selectedEvent, setSelectedEvent] = useState(null);
   // for the selected city 
-  const [city, setSelectedCity] = useState(null)
+  const [city, setSelectedCity] = useState("Tokyo")
 
   /// CONSTANTS ///
   // dimensions 
@@ -630,6 +632,34 @@ const TreeAndCity = ({
         gCityGraph.style("opacity", 0)
       })
 
+    //////////////////////////////////////////////
+    ///////////// Annotation ////////////////////
+    /////////////////////////////////////////////
+    const type = annotationCalloutElbow
+    const annotations = [{
+      note: {
+        label: "click on a city bubble to select it"
+      },
+      dy: -70,
+      dx: -120,
+      x: 320,
+      y: 150,
+      color: "#f8edeb",
+    }]
+    const makeAnnotations = annotation()
+      .editMode(false)
+      .notePadding(10)
+      .type(type)
+      .annotations(annotations)
+
+    const bubblesAnnotation = d3.select(annotationRef.current)
+      .attr("class", "annotation-group")
+      .style("font-family", "sans-serif")
+      .attr("fill", "hotpink")
+      .style("font-size", '12px')
+      .style("opacity", 1)
+      .call(makeAnnotations)
+
     } 
   }, [dataTree, dataCities, city, widthTree, heightTree, minCountryRadius, maxCountryRadius, showAllCities]);
 
@@ -640,6 +670,7 @@ const TreeAndCity = ({
         <svg ref={svgRef} width={widthTree} height={heightTree} overflow="visible">
           <defs ref={defsRef}></defs>
           <g ref={legendRef}></g>
+          <g ref={annotationRef}></g>
 
           {/* TREE */}
           <g ref={gRefTreeGraph}>
@@ -661,7 +692,7 @@ const TreeAndCity = ({
 
         </svg>
 
-        <div ref={opacityGRef} className="all-cities-button">back to cities</div>
+        <div ref={opacityGRef} className="all-cities-button">hide city graph</div>
 
         <div className="tooltip" ref={tooltipRef}>
         { selectedEvent ?

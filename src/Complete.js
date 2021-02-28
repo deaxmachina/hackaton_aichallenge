@@ -30,7 +30,7 @@ const Complete = () => {
   const [cities, setCities] = useState(null);
   const [emissionsType, setEmissionsType] = useState("total emissions") //useState("per capita emissions")
   // whether we want to show all cities or only thoese with data for >2 years 
-  const [showAllCities, setShowAllCities] = useState(true);
+  const [showAllCities, setShowAllCities] = useState(false);
 
   // Data load ///
   useEffect(() => {
@@ -76,10 +76,14 @@ const Complete = () => {
     <div>
       <HeroSection />
       <div className="cities-selector-group">
-        <button className="allcities-btn" onClick={() => setShowAllCities(true)}>all cities</button>
-        <button className="somecities-btn" onClick={() => setShowAllCities(false)}>cities with > 2 yr data</button>
-        <div className="allcities-img"></div>
-        <div className="somecities-img"></div>
+
+        <div className="allcities-img">
+          <button className="allcities-btn" onClick={() => setShowAllCities(true)}>all cities</button>
+        </div>
+
+        <div className="somecities-img">
+          <button className="somecities-btn" onClick={() => setShowAllCities(false)}>cities with > 2 yr data</button>
+        </div>
       </div>
 
       {
@@ -94,8 +98,8 @@ const Complete = () => {
             cities={cities}
             widthTree={showAllCities ? 1200 : 900} // 900 or 1200
             heightTree={showAllCities ? 1200 : 900} // 900 or 1200
-            minCountryRadius={showAllCities ? 2 : 3} // 2 or 3
-            maxCountryRadius={showAllCities ? 14 : 18} //14 or 18
+            minCountryRadius={showAllCities ? 2 : 5} // 2 or 3
+            maxCountryRadius={showAllCities ? 14 : 20} //14 or 18
           />
           : null
       }

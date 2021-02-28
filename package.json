@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.6.2",
     "chroma-js": "^2.1.0",
     "d3": "^6.4.0",
+    "d3-svg-annotation": "^2.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
