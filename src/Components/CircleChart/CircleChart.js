@@ -6,7 +6,6 @@ import chroma from "chroma-js";
 import "./CircleChart.css"
 import dataLoad from "../../data/cities_with_5_records.csv";
 
-
 const CircleChart = () => {
 
   /// refs ///

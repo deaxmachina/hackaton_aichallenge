@@ -9,6 +9,7 @@
     "chroma-js": "^2.1.0",
     "d3": "^6.4.0",
     "d3-svg-annotation": "^2.5.1",
+    "npx": "^10.2.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
