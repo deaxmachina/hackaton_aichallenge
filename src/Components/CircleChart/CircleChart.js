@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
 import _ from "lodash";
 import chroma from "chroma-js";
-
 import "./CircleChart.css"
 import dataLoad from "../../data/cities_with_5_records.csv";
 
