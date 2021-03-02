@@ -20,11 +20,11 @@
   box-sizing: border-box;
 }
 .whole-graph-subtitle {
-  width: 60%;
+  width: 65%;
   margin: auto;
   margin-top: 20px;
   font-size: 28px;
-  text-align: center;
+  text-align: left;
 }
 
 .challenge-name {
@@ -59,7 +59,7 @@ a:hover {
 }
 
 .whole-graph-project-description {
-  width: 60%;
+  width: 65%;
   margin: auto;
   margin-bottom: 50px;
 }
@@ -79,7 +79,7 @@ a:hover {
   background-color: var(--light-colour);
   color: var(--dark-colour);
   padding: 30px;
-  width: 60%;
+  width: 65%;
   box-sizing: border-box;
   margin: auto;
 }
@@ -104,7 +104,7 @@ a:hover {
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px;
-  width: 60%;
+  width: 65%;
 }
 
 @media(max-width: 600px) {
