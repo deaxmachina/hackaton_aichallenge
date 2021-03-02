@@ -111,16 +111,7 @@ a:hover {
   #hero {
     font-size: 16px;
   }
-  .whole-graph-subtitle {
-    width: 80%;
-  }
-  .whole-graph-project-description {
-    width: 80%;
-  }
-  .whole-graph-instructions {
-    width: 80%;
-  }
-  .whole-graph-disclaimer {
-    width: 80%;
+  .whole-graph-subtitle, .whole-graph-project-description, .whole-graph-instructions, .whole-graph-disclaimer {
+    width: 90%;
   }
 }
