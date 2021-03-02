@@ -96,7 +96,7 @@ const Complete = () => {
             meanEmissionsPerCapitaTotal={meanEmissionsPerCapitaTotal}
             emissionsType={emissionsType}
             cities={cities}
-            widthTree={showAllCities ? 1200 : 900} // 900 or 1200
+            widthTree={showAllCities ? 1200 : 930} // 900 or 1200
             heightTree={showAllCities ? 1200 : 900} // 900 or 1200
             minCountryRadius={showAllCities ? 2 : 5} // 2 or 3
             maxCountryRadius={showAllCities ? 14 : 20} //14 or 18

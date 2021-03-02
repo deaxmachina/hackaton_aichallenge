@@ -224,9 +224,10 @@ const TreeAndCity = ({
     const labelsG = d3.select(gTextRef.current)
     // 2. Append text element for each label 
     const labels = labelsG
-      .selectAll("text")
+      .selectAll(".city-name")
       .data(root.descendants())
       .join("text")
+      .classed("city-name", true)
         .attr("transform", d => `
           rotate(${d.x * 180 / Math.PI - 90}) 
           translate(${d.y + 10},0) 

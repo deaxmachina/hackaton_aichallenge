@@ -108,6 +108,9 @@ a:hover {
 }
 
 @media(max-width: 600px) {
+  #hero {
+    font-size: 16px;
+  }
   .whole-graph-subtitle {
     width: 80%;
   }

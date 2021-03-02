@@ -36,11 +36,12 @@
 }
 
 .city-name {
-  font-family: 'Fraunces', serif;
+  font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
+  fill: var(--light-colour);
   margin: auto;
   width: 200px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .all-cities-button {
@@ -54,4 +55,10 @@
   box-sizing: border-box;
   padding: 5px;
   cursor: default;
+}
+
+@media(max-width: 500px) {
+  .all-cities-button {
+    opacity: 0;
+  }
 }
