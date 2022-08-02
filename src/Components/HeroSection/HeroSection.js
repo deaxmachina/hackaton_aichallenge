@@ -27,7 +27,8 @@ const datasetDescription = " The global data set used for this challenge was ass
 const HeroSection = () => {
   return (
     <div id="hero">
-      <h1 className="whole-graph-title">CO2 Emissions in Cities Worldwide</h1>
+      <div className='emissions-img'></div>
+      <h1 className="whole-graph-title">CO2 emissions in cities</h1>
       <div className="whole-graph-subtitle">
         <span className="challenge-name">{challengeName}</span> for {nameOfOrg}
         <br></br>
@@ -52,27 +53,26 @@ const HeroSection = () => {
         <a href={challengeDescriptionLink} target="_blank"> here </a> 
       </div>
 
+      <div className="separator"></div>
 
       <div className="whole-graph-instructions">
-        <p className="whole-graph-instructions-title">How to read & interact with this visualisation</p>
+        <p className="whole-graph-instructions-title">How to read & interact with this viz</p>
         <ul className="whole-graph-instructions-list">
           <li><span>
             Circles of the nodes of the graph have a radius and colour corresponding to the mean CO2 emissions of the city across all years where it appears in the dataset. Bigger = more avg emissions.
           </span></li>
+          <br/>
           <li><span>
             Click on each circle to reveal information about the city in a separate visualisation. Note that these are not available for the greyed-out cities due to insufficient data. 
           </span></li>
+          <br/>
           <li><span>
             The visualisation for each city contains information about the avg carbon emissions of the city (radius of the surrounding circle), as well as emissions trends over time. Click on each year's point for more information, including methodology.
           </span></li>  
         </ul>
       </div>  
 
-      <p className="whole-graph-disclaimer">
-        Disclaimer! There are bound to be bugs and mistakes in the data for this visualisation. The current version is a very quick hackathon prototype and neither the data cleaning process nor the code have been reviewed. "CO2/carbon emissions" might include other emissions as well. I am not a domain expert. Please view this as a proof of concept.
-        <br></br>
-        * Best viewed on a laptop/desktop screen.
-      </p>
+
 
     </div>
 

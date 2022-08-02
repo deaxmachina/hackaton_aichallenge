@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Noto+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Zilla+Slab:wght@300;400;500&display=swap');
 :root {
-  --dark-colour: #141414;
+  --dark-colour: #111218;
   --light-colour: #f6f2e7;
   --emissions-colour: #6c236c
 }
@@ -15,7 +14,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
   color: var(--light-colour);
-  background-color: var(--dark-colour);
+  background-color: #111218;
   margin: auto;
   text-align: center;
 }
@@ -34,8 +33,8 @@ body {
 
 .allcities-img, .somecities-img {
   background-color: #cccccc;
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -43,23 +42,28 @@ body {
 
 .allcities-img {
   background-image: url("allcities.png");
+  border-radius: 50%;
 }
 
 .somecities-img {
   background-image: url("somecities.png");
+  border-radius: 50%;
 }
 
 .allcities-btn, .somecities-btn {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
-  padding: 5px;
-  margin: 65px 0px;
+  padding: 15px 20px;
+  margin: 70px 0px;
   background-color: var(--dark-colour);
   color: var(--light-colour);
   text-align: center;
-  width: 180px;
+  width: 200px;
+  border-radius: 10px;
   outline: none;
-  border: 2px solid var(--light-colour);
+  /* border: 2px solid var(--light-colour); */
+  border: none;
+  cursor: pointer;
 }
 
 .allcities-btn:hover, .somecities-btn:hover {

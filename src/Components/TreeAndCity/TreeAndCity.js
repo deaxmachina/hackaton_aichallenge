@@ -35,7 +35,7 @@ const TreeAndCity = ({
   // Other //
   const defsRef = useRef();
   const tooltipRef = useRef();
-  const opacityGRef = useRef();
+  // const opacityGRef = useRef();
   const legendRef = useRef();
   const annotationRef = useRef();
 
@@ -216,6 +216,7 @@ const TreeAndCity = ({
         .attr('stroke', d => d.children ? nodesColour : treeNodesColorScale(d.data.emissions_total))
         .attr("stroke-width", 1)
         .attr("stroke-opacity", 1)
+        .style('cursor', 'pointer')
 
     /////////////////////////////////
     ////// Text on the nodes ////////
@@ -238,8 +239,8 @@ const TreeAndCity = ({
         .attr("text-anchor", d => d.x < Math.PI === !d.children ? "start" : "end")
         .text(d => d.data.name == "missing"? d.data.nameCityRegion : d.data.name)
         .style("fill", lightColour)
-        .attr("font-size", 10)
-        .attr("font-family", "Fraunces, serif")
+        .attr("font-size", '14px')
+        .attr("font-family", "Zilla Slab, serif")
         .attr("opacity", d  => d.children ? 1 : cities.includes(d.data.name) ? 1 : 0.6)
         .attr("pointer-events", "none")
         .attr("pointer", 'default')
@@ -617,21 +618,21 @@ const TreeAndCity = ({
         // and make tree graph very transparent; 
         // if it's not showing all cities don't make it transparent as it still 
         // looks good even if it's opaque
-        showAllCities ? gTreeGraph.attr("opacity", 0.04) : gTreeGraph.attr("opacity", 0.9)
+        //showAllCities ? gTreeGraph.attr("opacity", 0.04) : gTreeGraph.attr("opacity", 0.9)
         
         // set the city graph opacity to 1 
         gCityGraph.style("opacity", 1)
       }
     })
 
-    // element to click on to get the full tree opacity again 
-    const opacityG = d3.select(opacityGRef.current)
-      .attr("transform", `translate(${100}, ${100})`)
-      .on("click", function(){ 
-        gTreeGraph.attr("opacity", 1) 
-        labels.attr("opacity", d  => d.children ? 1 : cities.includes(d.data.name) ? 1 : 0.6)
-        gCityGraph.style("opacity", 0)
-      })
+    // // element to click on to get the full tree opacity again 
+    // const opacityG = d3.select(opacityGRef.current)
+    //   .attr("transform", `translate(${100}, ${100})`)
+    //   .on("click", function(){ 
+    //     gTreeGraph.attr("opacity", 1) 
+    //     labels.attr("opacity", d  => d.children ? 1 : cities.includes(d.data.name) ? 1 : 0.6)
+    //     gCityGraph.style("opacity", 0)
+    //   })
 
     //////////////////////////////////////////////
     ///////////// Annotation ////////////////////
@@ -657,7 +658,7 @@ const TreeAndCity = ({
       .attr("class", "annotation-group")
       .style("font-family", "sans-serif")
       .attr("fill", "hotpink")
-      .style("font-size", '12px')
+      .style("font-size", '14px')
       .style("opacity", 1)
       .call(makeAnnotations)
 
@@ -693,7 +694,7 @@ const TreeAndCity = ({
 
         </svg>
 
-        <div ref={opacityGRef} className="all-cities-button">hide city graph</div>
+        {/* <div ref={opacityGRef} className="all-cities-button">hide city graph</div> */}
 
         <div className="tooltip" ref={tooltipRef}>
         { selectedEvent ?
